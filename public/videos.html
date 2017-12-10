@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <meta name="theme-color" content="#997c5a">
+
+    <title>EasyCapEd - Videos</title>
+
+    <!-- https://css-tricks.com/essential-meta-tags-social-media/ -->
+    <!--  Essential META Tags -->
+    <meta property="og:title"         content="EasyCapEd" />
+    <meta property="og:description"   content="Editing word-for-word of auto-generated captions (YouTube)" />
+    <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
+    <meta property="og:url"           content="http://www.your-domain.com/your-page.html" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favico/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favico/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favico/favicon-16.png">
+
+
+    <link rel="stylesheet" href="css/caped.css">
+
+    <link rel="stylesheet" href="css/caped.css">
+
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/videos.css">
+
+    <script src="js/error.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-messaging.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBO7O0xSI4aa6c9kLeZqS9RXJ6lhZwuJK4",
+    authDomain: "easycaped-1.firebaseapp.com",
+    databaseURL: "https://easycaped-1.firebaseio.com",
+    projectId: "easycaped-1",
+    storageBucket: "easycaped-1.appspot.com",
+    messagingSenderId: "729240215503"
+  };
+  firebase.initializeApp(config);
+</script>
+
+    <script src="js/promise-dom.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/sign-in.js"></script>
+    <script src="js/manage.js"></script>
+    <script src="js/sync.js"></script>
+    <script>
+      setTimeout(()=>{document.getElementById("menu-alt-videos").classList.add("current-in-menu")}, 1000);
+    </script>
+
+    <script src="js/popup.js"></script>
+    <link rel="stylesheet" href="css/popup.css">
+
+    <script src="js/videos.js"></script>
+  </head>
+  <body class="signed-out">
+
+    <header id="caped-header"><span id="header-subtitle">Videos</span></header>
+    
+    <section>
+      <section id="videos">
+
+        <div>
+          <h2>Add a video</h2>
+          <p>
+            You can currently only add videos from YouTube. Instructions are
+            <a href="caped-bookmarklet.html">here</a>.
+          </p>
+        </div>
+
+        <div>
+          <h2>Local video captions</h2>
+          <p>Stored on your device.</p>
+          <div id="local-captions">
+          </div>
+        </div>
+
+        <div>
+          <h2>Your video captions</h2>
+          <p>In the cloud. Your own.</p>
+          <div id="user-captions">
+            <div class="signed-out">
+              Please sign in.
+            </div>
+            <div class="signed-in">
+              <span>Fetching list...</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2>Shared video captions</h2>
+          <p>In the cloud. Shared with others.</p>
+          <div id="shared-captions">
+            <div class="signed-out">
+              Please sign in.
+            </div>
+            <div class="signed-in">
+              <span>Fetching list...</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </section>
+  </body>

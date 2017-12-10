@@ -1,0 +1,23 @@
+#bookmarklet-main {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    justify-items: center;
+    align-items: center;
+}
+html {
+    background: #ccc;
+}
+
+#bookmarklet-main > div {
+    max-width: 400px;
+    margin: 1rem;
+    background: white;
+    padding: 1rem;
+}
+
+#bookmarklet-div {
+    padding: 1rem;
+    width: 250px;
+}
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <meta name="theme-color" content="#997c5a">
+
+    <title>EasyCapEd programming test page</title>
+
+    <!-- https://css-tricks.com/essential-meta-tags-social-media/ -->
+    <!--  Essential META Tags -->
+    <meta property="og:title"         content="EasyCapEd" />
+    <meta property="og:description"   content="Editing word-for-word of auto-generated captions (YouTube)" />
+    <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
+    <meta property="og:url"           content="http://www.your-domain.com/your-page.html" />
+
+    <link rel="icon" type="image/png" sizes="192x192"  href="favico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favico/favicon-16x16.png">
+
+
+    <link rel="stylesheet" href="css/caped.css">
+
+    <link rel="stylesheet" href="css/caped.css">
+
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+      html {
+          background: yellow;
+      }
+    </style>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-messaging.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBO7O0xSI4aa6c9kLeZqS9RXJ6lhZwuJK4",
+    authDomain: "easycaped-1.firebaseapp.com",
+    databaseURL: "https://easycaped-1.firebaseio.com",
+    projectId: "easycaped-1",
+    storageBucket: "easycaped-1.appspot.com",
+    messagingSenderId: "729240215503"
+  };
+  firebase.initializeApp(config);
+</script>
+
+    <script src="js/promise-dom.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/sign-in.js"></script>
+
+    <script src="js/popup.js"></script>
+    <link rel="stylesheet" href="css/popup.css">
+
+    <script src="js/manage.js"></script>
+  </head>
+  <body>
+
+    <header id="caped-header"><span id="header-subtitle">Testing!!!</span></header>
+
+    <div class="tab" id="static-test">
+      <input type="radio" id="tab-1" name="tab-group-1">
+      <label for="tab-1">List 1 <i>▼</i></label>
+      <div class="tab close-tab">
+        <input type="radio" id="tab-close" name="tab-group-1">
+        <label for="tab-close">List 1 <i>▲</i><div class="bg-closer"></div></label>
+      </div>
+
+      <div class="content">
+	<ul>
+	  <li><a href="#">Menu Item #1</a></li>
+	  <li><a href="#">Menu Item #2</a></li>
+	  <li><a href="#">Really Long Menu Item #3</a></li>
+	  <li><a href="#">Menu Item #4</a></li>
+	  <li><a href="#">Menu Item #5</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <h1>Test page</h1>
+    <p>paragrah</p><p>paragrah</p>
+  </body>

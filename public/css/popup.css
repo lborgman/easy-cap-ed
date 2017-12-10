@@ -1,0 +1,76 @@
+body > .popup-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0007;
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 1;
+    justify-items: center;
+    align-items: center;
+    transition: opacity ease-in 0.3s;
+    opacity: 0;
+    z-index: 10;
+}
+body > .popup-bg > div {
+    position: relative;
+    background: white;
+    width: 20rem;
+    padding: 1rem;
+    xpadding-top: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    max-height: 80vh;
+    max-width: 90vw;
+    overflow: auto;
+}
+body > .popup-bg > div  .pop-close-x {
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    cursor: pointer;
+}
+body > .popup-bg > div > div.popup-header {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+body > .popup-bg > div > div.popup-body {
+    margin-bottom: 1rem;
+}
+body > .popup-bg > div div.popup-buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 30px;
+}
+body > .popup-bg > div div.popup-buttons .popup-button {
+    margin-bottom: 5px;
+}
+/* body > .popup-bg > div div.popup-buttons div.popup-button { */
+
+@-webkit-keyframes flash {
+    0% {
+        background-color: Yellow;
+        opacity:1;
+    }
+    22% {
+        background-color: Yellow;
+    }
+    77% {
+        background-color: Orange;
+    }
+    100% {
+        background-color: yellow;
+    }
+}
+.flash {
+    animation-name: flash;
+    animation-duration: 900ms;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}   

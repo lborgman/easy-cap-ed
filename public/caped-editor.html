@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <meta name="theme-color" content="#997c5a">
+
+    <!-- This page © Copyright 2017, Lennart Borgman -->
+    <meta name="author" content="Lennart Borgman" >
+
+    <title>EasyCapEd - Editor</title>
+
+    <!-- https://css-tricks.com/essential-meta-tags-social-media/ -->
+    <!--  Essential META Tags -->
+    <meta property="og:title"         content="EasyCapEd" />
+    <meta property="og:description"   content="Editing word-for-word of auto-generated captions (YouTube)" />
+    <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
+    <meta property="og:url"           content="http://www.your-domain.com/your-page.html" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favico/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favico/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favico/favicon-16.png">
+
+
+    <link rel="stylesheet" href="css/caped.css">
+
+    <link rel="stylesheet" href="css/menu.css">
+
+    <script src="js/error.js"></script>
+    
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-messaging.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBO7O0xSI4aa6c9kLeZqS9RXJ6lhZwuJK4",
+    authDomain: "easycaped-1.firebaseapp.com",
+    databaseURL: "https://easycaped-1.firebaseio.com",
+    projectId: "easycaped-1",
+    storageBucket: "easycaped-1.appspot.com",
+    messagingSenderId: "729240215503"
+  };
+  firebase.initializeApp(config);
+</script>
+
+    <script src="js/promise-dom.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/sign-in.js"></script>
+
+    <script src="js/popup.js"></script>
+    <link rel="stylesheet" href="css/popup.css">
+
+    <script src="js/vtt.js"></script>
+    <!-- https://github.com/mozilla/vtt.js/tree/master  -->
+
+    <script src="js/manage.js"></script>
+    <script src="js/caped.js"></script>
+    <script src="js/caped-editor.js"></script>
+    <script src="js/sync.js"></script>
+    <script src="js/download.js"></script>
+  </head>
+  <body>
+    <section id="the-view-port" class="flx-cont-vertical">
+      <header id="caped-header"><span id="header-subtitle">Editor</span></header>
+
+      <section id="edit" class="flx-cont Xflx-box-vertical">
+        <div id="video-container" class="video-container xflx-box">
+        </div>
+        <div id="outer-edit" class="flx-box Xflx-cont-vertical">
+          <!-- <div id="msg-anchor" class="flx-box-vertical"> -->
+            <div id="editor" tabindex="0"></div>
+          <!-- </div> -->
+          <div id="edit-controls" class="flx-cont-controls flx-box-vertical"></div>
+        </div>
+      </section>
+    </section>
+
+    <section id="files">
+      <div class="flx-cont">
+        <div id="drop-zone" class="flx-box">Drop file here</div>
+        <output id="list" class="flx-box"></output>
+        <textarea id="text" class="flx-box"></textarea>
+      </div>
+    </section>
+
+    <footer>
+      <span id="share-facebook">Share fb</span>
+    </footer>
+
+  </body>
+</html>

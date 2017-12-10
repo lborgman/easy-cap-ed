@@ -1,0 +1,81 @@
+html {
+    background: #eee;
+}
+body > section {
+    margin: 1rem;
+}
+#videos {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-between;
+    @media screen and (min-width: 600px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+#videos > div {
+    background: white;
+    padding: 1rem;
+    max-width: 600px;
+    min-width: 300px;
+    width: 300px;
+    margin-bottom: 1rem;
+}
+#videos > div > h2 {
+    margin-bottom: 0;
+}
+
+/* ----------------------- Videos ------------ */
+.videos-list-item {
+    background: #efefef;
+    padding: 10px;
+}
+.videos-list-item > p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+.videos-list-item .video-title {
+    color: #836643;
+}
+.videos-list-item .video-time {
+    color: #a0a0a0;
+}
+.videos-list-item .popup-button {
+    background: white;
+    padding: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+.videos-list-item .caption-buttons {
+    height: 1.5rem; /* fix-me: for mobile */
+}
+
+#videos ul {
+    list-style: none;
+    padding: 0;
+}
+#videos ul li {
+    xdisplay: block;
+}
+#videos ul li::before {
+    content: " ";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: green;
+    margin-right: 0.25rem;
+}
+
+#videos > div > h2 {
+    margin: 0;
+}
+#videos > div > h2 ~ p {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #888;
+}

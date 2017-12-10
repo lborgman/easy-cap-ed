@@ -1,0 +1,465 @@
+/* https://color.adobe.com/create/color-wheel/?base=2&rule=Compound&selected=2&name=My%20Color%20Theme&mode=rgb&rgbvalues=0.8,0.45447071791330684,0.0492470658486381,0.6,0.48565251609233034,0.35155011888407856,1,0.38788247963505984,0.1859168648067976,0.032214647846435907,1,0.49817215111433544,0.06427794087460957,0.8,0.2102812121762626&swatchOrder=0,1,2,3,4 */
+
+* {
+    box-sizing: border-box;
+}
+html {
+    background: black;
+    font-size: 17px;
+}
+html * {
+    font-size: 1rem;
+}
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+#caped-header {
+    display: flex;
+    justify-content: space-between;
+    flex: none;
+    padding: 2px;
+    color: white;
+    background: #cc740d;
+    background: #997c5a;
+    height: 30px;
+}
+#caped-header * {
+    background: #997c5a;
+    background: inherit;
+}
+#files {
+    display: none;
+    margin-bottom: 20px;
+    resize: vertical;
+}
+#drop-zone {
+    text-align: center;
+}
+#drop-zone:hover {
+    background-color: yellow !important;
+}
+#msg-anchor {
+    position: relative;
+}
+#the-transcript-div {
+    display: none;
+    height: 100%;
+    overflow: auto;
+    resize: vertical;
+}
+/* #the-transcript-div span.word { */
+/*     padding-left: 3px; */
+/*     padding-right: 3px; */
+/* } */
+#the-transcript-div > p {
+    background: #b4d5f1;
+    background: #d9e9f6;
+    background: #d1e8fb;
+    padding: 4px;
+    margin-top: 0;
+    margin-bottom: 4px;
+    /* Try to render fast: */
+    height: 29px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#the-transcript-div p.empty {
+    display: none;
+}
+#the-transcript-div > p > span.spoken.word-bad {
+}
+#the-transcript-div > p > span.spoken.word-ok {
+}
+
+#editor {
+    background: white;
+}
+#edit-controls {
+    padding-top: 10px;
+}
+.control-container {
+    display: block;
+}
+
+#the-transcript-div > p > span.word.changed {
+    xbackground: yellow !important;
+    background: yellow;
+    border: 1px solid yellow !important;
+}
+
+.word-bad {
+    background: #ff6c6c !important;
+    background: #ff632f !important;
+}
+#the-transcript-div > p > span.word.word-bad {
+    background: #ff632f !important;
+    border: 1px solid #ff632f !important;
+}
+.word-ok {
+    background: #86ff86 !important;
+    background: #10cc36 !important;
+}
+#the-transcript-div > p > span.word.word-ok {
+    background: #10cc36 !important;
+    border: 1px solid #10cc36 !important;
+}
+#the-transcript-div > p > span.word.spoken {
+    outline: maroon dotted 2px !important;
+}
+
+/* Fix-me: Does not work when p is not split. Remove? */
+#the-transcript-div > p > span.word:hover {
+}
+#the-transcript-div > p > span.word:focus {
+    position: relative;
+    background: white !important;
+    display: inline-block;
+    padding-right: 3px;
+}
+/* #Xthe-transcript-div > p > span.word:focus::after { */
+/*     position: relative; */
+/*     content: "\25B6"; */
+/*     color: red; */
+/*     background: black; */
+/*     top: 0; */
+/*     right: -3px; */
+/*     padding-left: 2px; */
+/*     padding-right: 1px; */
+/* } */
+.play-arrow {
+    color: red;
+    background: #000;
+    padding: 0;
+    padding-left: 7px;
+    margin-left: 0px;
+    margin-right: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    height: 25px;
+    width: 45px;
+}
+
+.edit-control {
+    position: relative;
+    padding: 7px;
+    min-width: 30px;
+    text-align: center;
+    color: #fff;
+    margin: 3px;
+    background: #939393 !important;
+    display: inline-block;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    /* Android material design, but this is "raised" which is incorrect. */
+    box-shadow: 0px 3px 1px -2px #987c5a, 0px 2px 2px 0px #987c5a, 0px 1px 5px 0px #987c5a;
+    border-radius: 2px;
+}
+.edit-control > .number-span {
+    position: absolute;
+    right: -2px;
+    top: -13px;
+    border: 1px solid black;
+    border-radius: 7px;
+    background: white;
+    color: #333;
+    font-size: 14px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.hidden { display: none !important; }
+#edit-controls.enabled .edit-control {
+    color: #000 !important;
+    background: #ddd !important;
+}
+#edit-controls .edit-control.enabled {
+    color: #000 !important;
+    background: #ddd !important;
+}
+#edit-controls.enabled .edit-control.word-bad {
+    background: #ff632f !important;
+}
+#edit-controls.enabled .edit-control.word-ok {
+    background: #10cc36 !important;
+}
+
+#prev-bad {
+}
+#bad-ok-info {
+    text-align: center;
+    color: #777;
+}
+#outer-edit {
+    background: black !important;
+}
+.box {
+  background-color: #218D9B;
+  height: 100px;
+  width: 100px;
+}
+
+#temp-msg {
+    display: block;
+    opacity: 0;
+    background: red;
+    position: fixed;
+    left: calc(50% - 115px);
+    top: 200px;
+    height: 0px;
+    width: 0px;
+    border: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+#temp-msg p {
+    background: none;
+}
+#temp-msg.transform-message {
+    transition: all 0.5s ease;
+}
+
+#temp-msg.message-active {
+    opacity: 1;
+    background-color: yellow;
+    border-color: #fff;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style: inset;
+    height: 150px;
+    width: 230px;
+}
+  
+
+@keyframes temp-message {
+    0% {
+        opacity: 0;
+        display: block;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+#edit-controls.enabled .edit-control.clicked {
+    background: #f90 !important;
+}
+#edit-controls .edit-control.enabled.clicked {
+    background: #f90 !important;
+}
+.no-copy {
+    -moz-user-select: none;
+    user-select: none;
+}
+#share-facebook {
+    background: #4A62B0;
+    color: white;
+    padding: 10px;
+}
+#facebook-share-iframe {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border: 2px red solid;
+}
+
+/* https://www.ostraining.com/blog/coding/responsive-videos/ */
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+.video-container {
+    border: 1px solid #4a4a4a;
+    max-width: 750px !important;
+    min-width: 300px !important;
+}
+#video-html5 {
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* https://benmarshall.me/responsive-iframes/ */
+.intrinsic-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+ 
+/* 16x9 Aspect Ratio */
+.intrinsic-container-16x9 {
+  padding-bottom: 56.25%;
+}
+ 
+/* 4x3 Aspect Ratio */
+.intrinsic-container-4x3 {
+  padding-bottom: 75%;
+}
+ 
+.intrinsic-container iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#bookmarklet-div {
+    padding: 8px;
+    background: #eae8e4;
+}
+#bookmarklet a {
+    background: maroon;
+    background: #10CC36;
+    background: #CC740D;
+    color: white;
+    color: black;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 8px;
+}
+#bookmarklet a:hover {
+    background: yellow;
+    background: #10CC36;
+    background: #CC8B05;
+    background: #CC5B00;
+    border: 1px white outset;
+    box-shadow: 10px 10px grey;
+    cursor: move;
+}
+#main-help iframe {
+    width: 100%;
+    height: 80vh;
+}
+
+section#the-view-port {
+    /* Guess the adress bar height: 2rem? (= 2*17px) */
+    height: calc(100vh - 3rem);
+}
+
+.flx-cont-controls {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.flx-box-controls {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: auto;
+}
+
+.flx-cont {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.flx-box {
+    flex-basis: auto;
+    flex-grow: 1;
+    min-width: 300px !important;
+    max-width: 600px !important;
+    margin: 00px !important;
+    margin-top: 5px !important;
+    background: white !important;
+}
+
+.flx-cont-vertical {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+.flx-box-vertical {
+    flex-grow: 1;
+}
+
+#edit {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+    align-items: stretch;
+    flex-direction: column;
+    flex-grow: 1;
+}
+footer {
+    display: none;
+}
+
+#user-icon > * {
+    border-radius: 12px;
+    cursor: pointer;
+}
+#user-icon:hover {
+    outline: white dotted 1px !important;
+}
+#user-icon > img {
+    height: 24px;
+}
+
+#main-menu * {
+    cursor: pointer;
+}
+
+.load-type-button {
+    margin-right: 1em;
+    height: 25px;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 12px;
+    padding: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    color: white;
+    cursor: pointer;
+}
+.load-type-button.local {
+    background: black !important;
+}
+.load-type-button.user {
+    background: green !important;
+}
+.load-type-button.shared {
+    background: blue !important;
+}
+    
+.debug { display: none; }
+
+#download-popup {
+    width: 90vw;
+    height: 80vh;
+}
+#download-popup textarea {
+    margin-bottom: 1rem;
+    height: 50vh;
+    background: #d1e8fb;
+}
+
+#move-copy-popup p .popup-button {
+    margin-left: 2rem;
+    margin-top: 4px;
+}
+

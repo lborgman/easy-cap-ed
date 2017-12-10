@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <meta name="theme-color" content="#997c5a">
+
+    <!-- This page © Copyright 2017, Lennart Borgman -->
+    <meta name="author" content="Lennart Borgman" >
+
+    <title>EasyCapEd - Bookmarklet</title>
+    <!-- Facebook etc -->
+    <meta property="og:url"           content="http://www.your-domain.com/your-page.html" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Your Website Title" />
+    <meta property="og:description"   content="Your description" />
+    <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
+
+    <link rel="icon" type="image/png" sizes="192x192"  href="favico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favico/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favico/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favico/favicon-16.png">
+
+
+
+    <link rel="stylesheet" href="css/caped.css">
+    <style>
+      html {
+          background: transparent;
+      }
+    </style>
+
+
+    <script src="js/error.js"></script>
+    <script src="js/promise-dom.js"></script>
+
+    <link rel="stylesheet" href="css/menu.css">
+    <script src="js/menu.js"></script>
+    <script>
+      setTimeout(()=>{document.getElementById("menu-alt-bm").classList.add("current-in-menu")}, 1000);
+    </script>
+
+    <link rel="stylesheet" href="css/popup.css">
+    <script src="js/popup.js"></script>
+
+    <link rel="stylesheet" href="css/bookmarklet.css">
+
+    <script src="js/bm-loader.js"></script>
+
+  </head>
+  <body>
+    <header id="caped-header"><span id="header-subtitle">Bookmarklet</span></header>
+
+    <section id="bookmarklet-main">
+
+      <div>
+        <h1>EasyCapEd bookmarklet</h1>
+        <p>
+          With this bookmarklet you can download auto-generated captions from YouTube.
+        </p>
+        <p>
+          Follow the instructions below and add it to your web browser.
+        </p>
+      
+        <div id="bookmarklet-div">
+          <p id="bookmarklet">
+
+<a href="javascript:'use strict'; /* @license Copyright 2017 Lennart Borgman (lennart.borgman@gmail.com) All rights reserved. */ function getYTtimedtextURL() { let ret; let resources = performance.getEntriesByType('resource'); resources.forEach(function(r){ 	if (r.name.match('timedtext')) { console.log('r.name', r.name); ret = r.name; } }); return ret; } function getYouTubeIdFromURL(ytURL) { let re = new RegExp('(?:[=/]|^)'+'((?:[A-Z0-9_-]){11})(?:[?&#\n]|$)', 'ig'); let m2 = re.exec(ytURL); console.log('m2', m2); if (m2) return m2[1]; } run: { console.log('this=', this); if (location.href.match(/\/caped-bookmarklet\.html$/)) { break run; } let capEdURL = 'http://dummy/path/caped-editor.html'; let tempA = document.createElement('a'); tempA.href = capEdURL; tempA.protocol = 'PROTOCOL'; tempA.host = 'HOST'; tempA.pathname = 'PATHNAME'; if (!location.hostname.match(/\.youtube\.com$/)) { if (confirm('Please go to YouTube and open your video. 🦁\nThen start this bookmarklet again.' +'\n\nOr, perhaps you wanted to go to the EasyCapEd editor?')) location.href = tempA.href; break run; } let ytId = getYouTubeIdFromURL(location.href); if (!ytId) { alert('Please choose a video. 🐶\nThen start this bookmarklet again.'); break run; } let ytTitle = document.title; let urlTT; /* Check for html5 */ let video = document.querySelector('video'); if (video) { let tracks = video.querySelectorAll('track'); for (let i=0; i<tracks.length; i++) { let track = tracks[i]; let src = track.getAttribute('src'); 	 if (src.match('timedtext')) { urlTT = src; } } } urlTT = urlTT || getYTtimedtextURL(); if (!urlTT) { alert('Please turn on the auto-generated captions you want. 🦄\nThen start this bookmarklet again.'); break run; } urlTT = urlTT.replace(new RegExp('fmt=vtt'), 'fmt=srv3'); if (!confirm('Open this in EasyCapEd? 👷‍♀️')) break run; let goURL = tempA.href +'?ytId='+ytId +'&ytTitle='+encodeURIComponent(ytTitle) +'&ytTimedText='+encodeURIComponent(urlTT) ; window.open(goURL); } ; void 0;">BOOKMARKLET</a>
+<!-- Bookmark length = 1962 -->
+
+          </p>
+          <p>
+            Drag the button into your bookmarks bar.
+            (For <b>mobile phones</b> please click the button and follow the instructions. Or, see <a href="https://www.cnet.com/how-to/how-to-use-bookmarklets-in-mobile-chrome/" target="_blank">here</a>.)
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h1>How to use this bookmarklet</h1>
+        <p>
+          You use it when you are viewing a video on YouTube
+          <b><i>in your web browser</i></b>.
+          It can do those things currently:
+        </p>
+        <ol>
+          <li>
+            It can grab the auto-generated captions and save them in EasyCaped (locally on your device).
+          </li>
+          <li>
+            It can find if someone else already has uploaded those
+            captions into the EasyCapEd cloud and shared them with you.
+          </li>
+          <li>
+            Find if you yourself have currently saved or uploaded those captions.
+          </li>
+        </ol>
+        <p>
+          On a <b>desktop</b> computer you just click on the bookmarklet in the bookmarks bar.
+        </p>
+        <p>
+          On a <b>mobile</b> phone web browser there is no bookmarks
+          bar.  To use the bookmarklet there you instead type <i>the name
+          you have given it</i> it in the address bar.
+        </p>
+      </div>
+        
+    </section>
+
+  </body>
+</html>
